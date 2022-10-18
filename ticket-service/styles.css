@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+
+}
+
+body {
+    display: flex;
+    /* flex-direction: row; */
+    height: 100vh;
+    min-width: 1200px;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    background: url('./images/bg2.jpg') no-repeat center ;
+    background-size: cover;
+
+}
+
+input, select, option {
+    height: 35px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+.container {
+    /* padding-top: 10%; */
+    /* padding-bottom: 10%; */
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+}
+
+.container > .block + .block {
+    margin-left: 25px;
+}
+
+.block {
+    width: 335px;
+    height:400px;
+    padding: 20px;
+    border: 2px solid blue;
+    background-color: snow;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+}
+.block-title {
+    font-weight: 700;
+}
+.block > *+* {
+    margin-top: 10px;
+}
+.block--final {
+    color: white;
+    background: #005cd8;
+    
+}
+label, .block-title {
+    display: flex;
+    align-items: center;
+}
+
+.block-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+#time2-block {
+    display: none;
+}
+#ticket-block {
+    display: none;
+}
+
+#route-price {
+    text-align: right;
+    margin-top: auto;
+}
+
+#submitBtn {
+    height: 30px;
+    background-color: #13bd07;
+    color:white;
+    font-family: inherit;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

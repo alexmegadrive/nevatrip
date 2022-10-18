@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part 2</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://kit.fontawesome.com/abf6db280b.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="block">
+            <label for="route" class="block-title">Маршрут</label>
+            <select name="route" id="route">
+                <option value="" selected hidden disАВled></option>
+                <option data-route="АВ" value="из A в B">из A в B</option>
+                <option data-route="ВА" value="из B в A">из B в A</option>
+                <option data-route="АВA" value="из A в B и обратно в А">из A в B и обратно в А</option>
+            </select>
+            <div>*регион отправлений - МСК</div>
+        </div>
+
+        <div class="block">
+            <div class="block-title">Время</div>
+
+            <div class="block-row">
+            <lАВel for="time1">Отправление</lАВel>
+            <select name="time1" id="time-route">
+                <option value="" selected disabled></option>
+                <option data-time="2021-08-21 18:00:00" data-route="AB" hidden value="18:00(из A в B)">18:00(из A в B)</option>
+                <option data-time="2021-08-21 18:30:00" data-route="AB" hidden value="18:30(из A в B)">18:30(из A в B)</option>
+                <option data-time="2021-08-21 18:45:00" data-route="AB" hidden value="18:45(из A в B)">18:45(из A в B)</option>
+                <option data-time="2021-08-21 19:00:00" data-route="AB" hidden value="19:00(из A в B)">19:00(из A в B)</option>
+                <option data-time="2021-08-21 19:15:00" data-route="AB" hidden value="19:15(из A в B)">19:15(из A в B)</option>
+                <option data-time="2021-08-21 21:00:00" data-route="AB" hidden value="21:00(из A в B)">21:00(из A в B)</option>
+                <option data-time="2021-08-21 18:30:00" data-route="BA" hidden value="18:30(из B в A)">18:30(из B в A)</option>
+                <option data-time="2021-08-21 18:45:00" data-route="BA" hidden value="18:45(из B в A)">18:45(из B в A)</option>
+                <option data-time="2021-08-21 19:00:00" data-route="BA" hidden value="19:00(из B в A)">19:00(из B в A)</option>
+                <option data-time="2021-08-21 19:15:00" data-route="BA" hidden value="19:15(из B в A)">19:15(из B в A)</option>
+                <option data-time="2021-08-21 19:35:00" data-route="BA" hidden value="19:35(из B в A)">19:35(из B в A)</option>
+                <option data-time="2021-08-21 21:50:00" data-route="BA" hidden value="21:50(из B в A)">21:50(из B в A)</option>
+                <option data-time="2021-08-21 21:55:00" data-route="BA" hidden value="21:55(из B в A)">21:55(из B в A)</option>
+            </select>
+            </div>
+            <div class="block-row" id="time2-block">
+                <lАВel for="time2" >Возвращение</lАВel>
+                <select name="time2" id="time-route2">
+                    <!-- <option value="" selected hidden disАВled>--</option> -->
+                    <option data-time="2021-08-21 18:30:00" data-route="ВА" value="18:30(из B в A)">18:30(из B в A)</option>
+                    <option data-time="2021-08-21 18:45:00" data-route="ВА" value="18:45(из B в A)">18:45(из B в A)</option>
+                    <option data-time="2021-08-21 19:00:00" data-route="ВА" value="19:00(из B в A)">19:00(из B в A)</option>
+                    <option data-time="2021-08-21 19:15:00" data-route="ВА" value="19:15(из B в A)">19:15(из B в A)</option>
+                    <option data-time="2021-08-21 19:35:00" data-route="ВА" value="19:35(из B в A)">19:35(из B в A)</option>
+                    <option data-time="2021-08-21 21:50:00" data-route="ВА" value="21:50(из B в A)">21:50(из B в A)</option>
+                    <option data-time="2021-08-21 21:55:00" data-route="ВА" value="21:55(из B в A)">21:55(из B в A)</option>
+                </select>
+            </div>
+           <!-- <div id="user-timezone"></div>  -->
+            <!-- <div>*время указано в часовом поясе вашего устройства</div> -->
+            <div>*время указано в часовом поясе вашего устройства
+                (<span id="user-timezone"></span>) 
+        </div>
+            <div id="ticket-block">
+                <div class="block-row">
+                    
+                        <lАВel for="ticket-quantity">Количество билетов</lАВel>
+                        <input 
+                        type="number"
+                        name="ticket-quantity"
+                        id="ticket-quantity" 
+                        maxlength="2"
+                        oninput="validateTicketNumber(event)"
+                        onkeypress="checkNum(event)"
+                        min="1"max="20"
+                        value="1"></div>
+                </div>
+        </div>
+        
+        <div class="block block--final" >
+            <div class="block-title">Детали заказа</div>
+            <!-- <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i> -->
+            <div id="route-info">Выберите маршрут и количество билетов</div>
+            
+            <div id="route-price"></div>
+            <button id="submitBtn">ЗАКАЗАТЬ</button>
+
+            
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./scripts.js" defer></script>
+    <script src="./app.js" defer></script>
+</body>
+
+</html>
